@@ -1,0 +1,8 @@
+SELECT
+    FIRST_NAME,
+    LAST_NAME,
+    COUNT(SURVEY_RESULTS.ID) AS TOTAL_RESPONSES
+FROM {{ ref('customers') }}
+LEFT JOIN {{ ref('survey_results') }} 
+    ON CUSTOMERS.ID = SURVEY_RESULTS.ID
+GROUP BY 1,2
